@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双向绑定</title>
+</head>
+<body>
+	<div class="div">
+		<h1 id="name"></h1>
+		<input type="text">
+		<input type="button" value="改变data内容" onclick="changeInput()">
+	</div>
+	
+<script src="observer.js"></script>
+<script src="watcher.js"></script>
+
+<script>
+	function myVue (data, h1Dom, inputDom, key) {
+		this.data = data;
+		// console.log('myVue this', this, data, inputDom);
+		
+		observable(data); // 将数据变的可观测
+		
+		h1Dom.innerHTML = this.data[key]; // 初始化模板数据的值
+		inputDom.value = this.data[key]; // 初始化模板数据的值
+
+		// this绑定视图 key字段名 function回调函数
+	    new Watcher(this, key, function (value, oldValue, status) {
+			// console.log( 'myVue Watcher', value, oldValue, status);
+			if(status){
+				h1Dom.innerHTML = value;
+			}else{
+				inputDom.value = value;
+			}
+		});
+
+	    return this;
+	}
+
+	var h1Dom = document.querySelector('#name');
+	var inputDom = document.querySelector('input');
+	
+    var myVue = new myVue({
+		name: 'hello world'
+	}, h1Dom, inputDom, 'name');
+ 	
+	//改变输入框内容
+    inputDom.oninput = function (e) {
+    	myVue.data.name = e.target.value;
+	}
+	
+	//改变data内容
+	function changeInput(){
+		myVue.data.name = "hello world";
+	}
+</script>
+
+<style>
+	.div{
+		width: 300px;
+		margin: 50px auto;
+	}
+</style>
+
+</body>
+</html>

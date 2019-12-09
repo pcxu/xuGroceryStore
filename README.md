@@ -9,4 +9,4 @@ xuGroceryStore
 
 # 目录
 Js   
-1.  [defineProperty实现双向绑定。](https://github.com/pcxu/xuGroceryStore/tree/master/Js/defineProperty%E5%AE%9E%E7%8E%B0%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A)
+1.  [defineProperty实现双向绑定。](https://github.com/pcxu/xuGroceryStore/tree/master/js/defineProperty%E5%AE%9E%E7%8E%B0%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A)

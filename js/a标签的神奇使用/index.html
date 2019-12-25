@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<link rel="shortcut icon" href="./pcxuIco.ico" type="image/x-icon" />
+    <title>a 标签的神奇使用</title>
+    
+  </head>
+
+	<body>
+		<!-- nofollow有两种用法：
+		1.用于meta元标签： -->
+		<meta name="robots" content="nofollow" /> <br/>
+		<!-- 告诉爬虫该页面上所有链接都无需追踪。
+		2.用于a标签： -->
+		<a target="_blank" href="www.baidu.com" rel="nofollow">原链接访问</a> <a target="_blank" href="https://www.github.com">新链接访问</a> <br/>
+		<!-- 告诉爬虫该页面无需追踪 -->
+
+		<!-- a 标签上伪类的执行、定义顺序-->
+		<!-- 执行顺序应该是： link hover active visited
+		因为存在样式层叠问题，所以书写顺序需要调整，把类似hover这种瞬时状态覆盖link这种常态
+		link visited hover active -->
+		<a class="pseudo-classes" href="javascript:void(0)" >伪类</a> <br/>
+		<style type="text/css">
+		    .pseudo-classes:link{
+		        color:red;
+		        text-decoration: none; 
+		    }
+		    .pseudo-classes:visited{
+		        color:green;
+		        text-decoration: underline; 
+		    }
+		    .pseudo-classes:hover{
+		        color:yellow;
+		        text-decoration: none; 
+		    }
+		    .pseudo-classes:actived{
+		        color:red;
+		        text-decoration: none; 
+		    }
+		</style>
+
+		<a href="tel:139xxxxxxxx">一键拨打号码</a>
+		<a href="mailto:yuojian@163.com">一键发送邮件</a>
+		<a href="sms:139xxxxxxx">一键发送短信</a>
+
+		<input type="text" placeholder="请输入文字"/>
+		<input type="number" pattern="[0-9]*" placeholder="请输入qq号"/> 
+		<!-- //type="number"限定输入数字，pattern="[0-9]*"限制数字范围 -->
+		<input type="tel" placeholder="请输入电话"/>
+		<input type="date" placeholder="请输入日期"/>
+		<input type="datetime-local" placeholder="请输入时间"/>
+		<!-- Android 是利用 deeplink， iOS 是利用 URL Schemes -->
+		<a href="yourapp://page/xxx" /> <br/>
+
+
+		<a href="javascript:void(0)">javascript:void(0)</a> <br/>
+		<!-- 当用户点击一个以 javascript: URI 时，它会执行URI中的代码，然后用返回的值替换页面内容，除非返回的值是undefined。void运算符可用于返回undefined。(https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/void#JavaScript_URIs)
+		void关键字在js的含义为执行一个表达式，但不会返回任何值（即undefined）；因此void(0)语句相当于执行表达式0，然后不返回任何值；
+		综上，href="javascript:void(0)"的作用是点击链接后不发生任何行为，常用于阻止页面刷新或跳转； -->
+
+		<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a" onclick="event.preventDefault()">onclick or href</a> <br/>
+		<!-- onclick属性先触发，判断依据是在onclik中使用preventDefault方法可以阻止a标签的跳转，说明a标签的跳转行为是一个默认行为 -->
+		
+		<a href="javascript:void(0)" rel="noreferer">访问</a> <br/>
+		<!-- 当我们使用targer=_blank打开一个新的标签页时, 新页面的window对象上有一个属性 opener, 它指向的是前一个页面的 window 对象, 因此, 后一个页面就获得了前一个页面的控制权。甚至在跨域的情况下也可以生效, 你可以使用 window.opener.location.replace更改前一个页面的url。
+		使用 rel=noopener可以把window.opener置为空, 老一些的浏览器可以使用 rel=noreferer。-->
+
+		<a href="https://codeload.github.com/vkboo/vue-svg-board/zip/master" download="vue-board-svg-name">vue-board-svg文件下载</a> <br/>
+		<!-- 文件下载 -->
+
+		<a href="imeituan://xxx.xxx.xxx">URL Scheme打开app</a> <br/>
+		<!-- 利用URL Scheme打开app -->
+
+
+	</body>
+</html>

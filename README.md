@@ -2,9 +2,11 @@ xuGroceryStore
 ==============
 <p align="center">
   <br>
-  <img width="400" src="./assets/pcxu.JPG" alt="pcxu">
+  <img width="200" src="./assets/pcxu.JPG" alt="pcxu">
+  <br>
   <br>
 </p>
+
 # 食用方式
 根据目录索引，获取感兴趣的项目。
 

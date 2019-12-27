@@ -2,7 +2,7 @@ xuGroceryStore
 ==============
 <p align="center">
   <br>
-  <img width="200" src="./assets/pcxu.JPG" alt="pcxu">
+  <img width="200" src="./assets/pcxu.JPG" alt="pcxu logo">
   <br>
   <br>
 </p>
